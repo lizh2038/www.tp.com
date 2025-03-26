@@ -1,0 +1,10 @@
+<?php use think\facade\Session; 
+
+foreach(['success', 'info', 'warning', 'danger'] as $_msg): ?>
+    <?php if (Session::has($_msg)): ?>
+        <div class="text-center alert alert-<?php echo $_msg; ?>" role="alert">
+            <i class="fa fa-bullhorn"></i> <?php echo Session::get($_msg); ?>
+        </div>
+        <?php Session::delete($_msg); ?>
+    <?php endif; ?>
+<?php endforeach; ?>

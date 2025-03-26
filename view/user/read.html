@@ -1,0 +1,59 @@
+{extend name="layouts/default" /}
+{block name="title"}用户个人中心{/block}
+{block name="content"}
+<div class="row">
+    <div class="offset-md-2 col-md-8 d-flex flex-column justify-content-center align-items-center">
+        <img src="{$member->avatar}" class="img-thumbnail" alt="{$member->name}" style="width: 200;">
+        <h3 class="px-4 pt-2 text-warning">{$member->name}</h3>
+    </div>
+    {include file="users/_switch_follow" /}
+    <div class="d-flex justify-content-center align-items-center mb-4">
+        <div class="d-flex flex-column justify-content-center align-items-center px-4 border-end">
+          <a class="text-decoration-none text-success" href="{:url('user.followings', ['id' => $member->id])}">
+            <?php echo $member->followings()->count();?>
+          </a>
+          <span style="font-size: 13px;"class="text-secondary">关注</span>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center px-4 border-end">
+          <a class="text-decoration-none text-success" href="{:url('user.followers', ['id' => $member->id])}">
+            <?php echo $member->followers()->count();?>
+          </a>
+          <span style="font-size: 13px;"class="text-secondary">粉丝</span>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center px-4">
+          <a class="text-decoration-none text-success">
+            <?php echo $member->topics()->count();?>
+          </a>
+          <span style="font-size: 13px;"class="text-secondary">博文</span>
+        </div>
+    </div>  
+</div>
+<div class="row">
+    <div class="offset-md-2 col-md-8">
+        <div class="card">      
+            <div class="card-header text-center">
+                <i class="fa fa-list-ul text-success"></i> TA发的博文列表
+            </div>
+            <div class="card-body">
+                {if $count > 0} 
+                    <ul class="list-group list-group-flush">
+                        {foreach $topics as $topic}
+                            {include file="topics/_topic"}
+                        {/foreach}
+                    </ul>
+                    <div class="pages ">
+                        {$topics|raw}
+                        <span class="count">共 {$count}条数据</span>
+                    </div>  
+                {else /}
+                    <div class="alert alert-danger">
+                        <i class="fa fa-exclamation-triangle"></i> 这个家伙很懒，什么也没有写!!!
+                    </div>
+                {/if}
+            </div>
+           
+            
+        </div>
+    </div>
+</div>  
+{/block}

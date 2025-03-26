@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="{:url('home')}">My weibo</a>
+        <ul class="navbar-nav">
+            <?php if(islogin()): ?>
+                <?php $user = loginuser(); ?>
+                  
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{:url('User/index')}">用户列表</a>
+                    </li>
+                  
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          {$user->name}
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item text-center" href="{:url('user/read', ['id' => $user->id])}">个人中心</a></li>
+                          <li><a class="dropdown-item text-center" href="{:url('user/edit', ['id' => $user->id])}">编辑资料</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li>
+                            <form action="{:url('logout')}" method="post" class="text-center"
+                            onsubmit="return confirm('你是否真的要退出？')">
+                                
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-sm btn-outline-danger text-center">退出登录</button>
+                            </form>
+                          </li>
+                        </ul>
+                      </li>
+            <?php else: ?>
+                <li class="nav-item">
+                  <a class="nav-link " aria-current="page" href="{:url('help')}">帮助</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{:url('login.create')}">登录</a>
+                </li>
+            <?php endif; ?>
+                
+            
+             
+        </ul>      
+    </div>
+</nav>

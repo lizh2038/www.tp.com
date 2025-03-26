@@ -1,0 +1,58 @@
+nav.navbar {
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+a:hover {
+    text-decoration: underline !important;
+}
+div.pages {
+    margin-top: 10px;
+    border-top: 1px solid green;
+}
+div.pages ul.pagination {
+   margin-top: 10px;
+}
+div.pages span.count {
+    margin-top: 10px;
+    display: inline-block;
+    font-size: 14px;
+    color: #6c757d;
+}
+div.pages ul.pagination li{
+    padding: 6px 12px;
+    border: 1px solid greenyellow;
+    border-radius: 5px;
+    color: #000;
+    background-color: #f8f9fa;
+    margin: 0 2px;
+    
+}
+div.pages ul.pagination li.active {
+    background-color: greenyellow;
+    color: #fff;
+}
+div.pages ul.pagination li.disabled {
+    color: #6c757d;
+    pointer-events: none;
+}
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+footer.footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    background-color: #f8f9fa;
+    border-top: 1px solid green;
+    font-size: 13px;
+}
+footer.footer div a:hover {
+    text-decoration: underline !important;
+    color: darkcyan !important;
+}
+.card-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+}
+

@@ -1,0 +1,23 @@
+<li class="list-group-item d-flex justify-content-between align-items-center">
+    <div>
+        <img src="{$user->avatar}" alt="{$user->name}" class="rounded-circle" width="32" height="32">
+        <a class="text-decoration-none text-success" href="{:url('User/read', ['id' => $user->id])}">{$user->name}</a>
+        <i class="fa fa-envelope text-danger"></i>
+        <span class="text-secondary">{$user->email}</span>       
+    </div>
+    <?php if (isLogin()) ?>
+        <?php $current_user = loginUser(); ?>
+        <?php if(isAdmin($current_user) &&($current_user->id !== $user->id) &&($user->is_admin!== 1)): ?>
+            <form action="{:url('User/delete',['id'=>$user->id])}" method="post" class="text-center"
+                onsubmit="return confirm('你真的确认要删除该用户？')">                  
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="__token__" value="{:token()}">
+                
+            </form>
+        
+        
+            
+    
+        
+    <?php endif; ?>
+</li>

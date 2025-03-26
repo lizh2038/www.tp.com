@@ -1,0 +1,10 @@
+<form method="post" action="{:url('Topic/save')}">
+    {include file="shared/_errors"}
+    {:token_field()}
+    <textarea class="form-control w-100" name="content" placeholder="分享学习内容，聊聊生活！......" rows="8">{:session('old_topic_content')}</textarea>
+    <div class="mt-2 mb-4">
+        <button class="btn btn-sm btn-outline-success" type="submit">
+            <i class="fa fa-check"></i> 发布
+        </button>
+    </div>
+</form>

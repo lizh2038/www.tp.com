@@ -1,0 +1,18 @@
+<?php
+if(session('?errors')){
+    $errors = session('errors');
+    
+}else{
+    $errors = false;
+}
+?>
+<?php if($errors): ?>
+    <ur>
+        <?php foreach($errors as $error): ?>
+            <li class="alert alert-danger ps-3 p-2" style="font-size: 13px;">
+                <i class="fa fa-bell-o"></i>
+                <?php echo $error; ?></li>
+        <?php endforeach; ?>
+    </ur>
+    <?php session('errors', null); ?>
+<?php endif; ?>

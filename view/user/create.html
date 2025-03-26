@@ -1,0 +1,58 @@
+{extend name="layouts/default" /}
+{block name="title"}用户注册{/block}
+{block name="content"}
+<style>
+    /* 默认样式（移动端） */
+    .card {
+      width: 100%; /* 移动端保持默认宽度 */
+    }
+  
+    /* 桌面端样式 */
+    @media (min-width: 768px) {
+      .card {
+        width: 35%; /* 桌面端增加 50% 的宽度 */
+        max-width: 1200px; /* 设置最大宽度，避免过度拉伸 */
+        
+      }
+    }
+  </style>
+<div class="row">
+    <div class="offset-md-0 col-md-12 d-flex flex-column justify-content-center align-items-center">
+        <div class="card">
+            <div class="card-header h3 text-center">
+                <i class="fa fa-address-book text-success" ></i>&nbsp;新用户注册
+            </div>
+            <div class="card-body">
+                {include file="shared/_errors"}
+                <form method="post" action="{:url('User/save')}">
+                    {:token_field()}
+                    <div class="mb-3">
+                      <label for="name" class="form-label">用户名称:</label>
+                      <input type="text" required maxlength="25" value="{:Session('old.name')}"
+                      class="form-control form-control-lg" style="width: 100%; height: 50px;" placeholder="请输入你的名称" id="name" name="name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">邮箱:</label>
+                        <input type="email" required maxlength="255" value="{:Session('old.email')}"
+                        class="form-control form-control-lg" style="width: 100%; height: 50px;" placeholder="请输入你的邮箱" id="email" name="email">
+                      </div>
+                    <div class="mb-3">
+                      <label for="password" class="form-label">密码:</label>
+                      <input type="password" required minlength="6" maxlength="255" 
+                      class="form-control form-control-lg" style="width: 100%; height: 50px;" placeholder="请输入你的密码" id="password" name="password">
+                    </div>
+                    <div class="mb-3">
+                      <label class="password_confirm" for="form-label">密码确认:</label>
+                      <input type="password" required minlength="6" maxlength="255"
+                       class="form-control form-control-lg" style="width: 100%; height: 50px;" placeholder="请重新输入你的密码" id="password_confirm" name="password_confirm">
+                    </div>
+                    <div class="d-flex ">
+                    <button type="submit" class="btn btn-primary">注册</button>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
+{/block}

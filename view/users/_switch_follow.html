@@ -1,0 +1,19 @@
+<?php if(isLogin() && !isMineopt($member->id)):?>
+      <div class="d-flex justify-content-center align-items-center mb-2">
+        <?php $login_user = loginUser();?>
+        <?php if($login_user->isFollowing($member->id)):?>
+        <form action="{:url('followers.save',['id'=>$member->id])}" method="post" class="text-center">        
+          
+          <input type="hidden" name="__token__" value="{:token()}">
+          <button class="btn btn-outline-success" type="submit">关注</button>
+      </form>
+          
+        <?php else:?>
+        <form action="{:url('followers.delete',['id'=>$member->id])}" method="post" class="text-center">        
+          <input type="hidden" name="_method" value="DELETE">
+          <input type="hidden" name="__token__" value="{:token()}">
+          <button class="btn btn-outline-danger" type="submit">取消关注</button>
+        </form>
+        <?php endif;?>
+      </div>
+    <?php endif;?>

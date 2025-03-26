@@ -1,0 +1,37 @@
+<li class="list-group-item d-flex justify-content-between align-items-center">
+    <li class="list-group-item">
+        <div class="d-flex align-items-center">
+            <?php if ($topic->user): ?>
+            <img src="{$topic->user->avatar}" alt="{$topic->user->name}" class="rounded-circle" width="50" height="50">
+                <div class="d-flex flex-column ms-2">
+                    <a class="text-decoration-none text-success" href="{:url('User/read', ['id' => $topic->user->id])}">{$topic->user->name}</a>
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-envelope text-danger"></i>
+                        <small class="text-secondary ms-1">{$topic->user->email}</small> 
+                    </div>
+                </div>
+            <?php else: ?>
+            <img src="/images/faces/1.png" alt="Unknown User" class="rounded-circle" width="50" height="50">
+                <div class="d-flex flex-column ms-2">
+                    <span class="text-secondary">Unknown User</span>
+                </div>
+            <?php endif; ?>    
+        </div>
+            
+
+        <div style="font-size: 13px;" class="text-success pt-2 pb-2 d-flex justify-content-between align-items-center">
+            <div>{$topic->content}</div>
+            <form action="{:url('Topic/delete',['id'=>$topic->id])}" method="post" 
+                class="text-center form-topic" style="width:  max-content;padding-left: 10px;"
+                onsubmit="return confirm('你真的确认要删除这篇博文吗？')">                  
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="__token__" value="{:token()}">
+                <button class="btn btn-sm btn-outline-danger float-right">删除</button>
+            </form>
+        </div>
+        <div class="text-end text-secondary" style="font-size: 12px;">
+            <i class="fa fa-clock-o text-danger"></i>{$topic->create_time}
+        </div>
+
+    </li>
+    
