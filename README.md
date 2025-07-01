@@ -109,25 +109,6 @@ php think run
 
 如有问题或建议，请联系开发者：
 - **邮箱**：lizheng2038@foxmail.com
-- **GitHub**：[your-repo](https://github.com/your-repo)
-```
-用户列表
-用户列表
-
-用户个人资料编辑
-用户个人资料编辑
-
-许可证
-本项目遵循 Apache 2.0 开源协议。
-
-联系我们
-如有问题或建议，请联系开发者：
-
-邮箱：lizheng2038@foxmail.com
-GitHub：your-repo
-
-## 许可证
-
-本项目采用 MIT 许可证，详情见 [LICENSE](LICENSE) 文件。
+- **GitHub**：[lizheng2038](https://github.com/)
 
 
